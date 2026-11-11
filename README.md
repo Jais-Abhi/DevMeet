@@ -128,26 +128,26 @@ flowchart TB
     end
 
     subgraph Database["Data & Messaging"]
-        MongoDB[(MongoDB Atlas)]
+        MongoDB[("MongoDB Atlas")]
         InngestCloud["Inngest Event Mesh"]
     end
 
     %% Interactions
-    UI -->|1. Authenticate| ClerkAuth
-    UI -->|2. REST Requests (JWT)| AuthMW
+    UI -->|"1. Authenticate"| ClerkAuth
+    UI -->|"2. REST Requests (JWT)"| AuthMW
     AuthMW --> SessionCtrl
     AuthMW --> ChatCtrl
     
-    SessionCtrl -->|Persist Sessions| MongoDB
-    ChatCtrl -->|Create User Tokens| StreamCloud
+    SessionCtrl -->|"Persist Sessions"| MongoDB
+    ChatCtrl -->|"Create User Tokens"| StreamCloud
     
-    Monaco -->|Execute Code| PistonAPI
-    StreamSDK <-->|Real-Time WebRTC Video & Chat| StreamCloud
+    Monaco -->|"Execute Code"| PistonAPI
+    StreamSDK ---|"WebRTC Video & Chat Stream"| StreamCloud
 
-    ClerkAuth -->|Webhooks: User Lifecycle| InngestCloud
-    InngestCloud -->|Trigger syncUser / deleteUser| InngestHandler
-    InngestHandler -->|Upsert User| MongoDB
-    InngestHandler -->|Upsert/Delete User| StreamCloud
+    ClerkAuth -->|"Webhooks: User Lifecycle"| InngestCloud
+    InngestCloud -->|"Trigger syncUser / deleteUser"| InngestHandler
+    InngestHandler -->|"Upsert User"| MongoDB
+    InngestHandler -->|"Upsert/Delete User"| StreamCloud
 ```
 
 ### Component Breakdown
@@ -230,8 +230,10 @@ sequenceDiagram
     Note over Host,Guest: 3. Real-Time Media & Coding Session
     Host->>Stream: Connect WebRTC Video & Join Chat Channel
     Guest->>Stream: Connect WebRTC Video & Join Chat Channel
-    Host<-->>Guest: 1-on-1 Video Call + Screen Share + Real-Time Chat
-    Host<-->>Guest: Collaborative Coding in Monaco Editor
+    Host->>Guest: 1-on-1 Video Call + Screen Share + Real-Time Chat
+    Guest->>Host: 1-on-1 Video Call + Screen Share + Real-Time Chat
+    Host->>Guest: Collaborative Coding in Monaco Editor
+    Guest->>Host: Collaborative Coding in Monaco Editor
 
     Note over Host,Server: 4. Room Teardown
     Host->>Server: POST /api/sessions/:id/end
@@ -250,26 +252,26 @@ Diagram representing the solo practice testing loop and output validation.
 
 ```mermaid
 flowchart TD
-    Start([User writes code in Monaco Editor]) --> ClickRun[Click 'Run Code' Button]
-    ClickRun --> BuildPayload[Build Piston JSON Payload: language, version, files]
-    BuildPayload --> CallPiston[POST https://emkc.org/api/v2/piston/execute]
+    Start(["User writes code in Monaco Editor"]) --> ClickRun["Click 'Run Code' Button"]
+    ClickRun --> BuildPayload["Build Piston JSON Payload: language, version, files"]
+    BuildPayload --> CallPiston["POST https://emkc.org/api/v2/piston/execute"]
     
-    CallPiston --> RespCheck{HTTP 200 OK?}
-    RespCheck -- No --> ShowHTTPError[Display Execution Network Error]
-    RespCheck -- Yes --> ParseOutput[Parse stdout & stderr]
+    CallPiston --> RespCheck{"HTTP 200 OK?"}
+    RespCheck -- "No" --> ShowHTTPError["Display Execution Network Error"]
+    RespCheck -- "Yes" --> ParseOutput["Parse stdout & stderr"]
 
-    ParseOutput --> HasStderr{Is stderr present?}
-    HasStderr -- Yes --> ShowCompileError[Render Red Error in Output Panel]
-    HasStderr -- No --> CheckMode{Mode: Interview or Practice?}
+    ParseOutput --> HasStderr{"Is stderr present?"}
+    HasStderr -- "Yes" --> ShowCompileError["Render Red Error in Output Panel"]
+    HasStderr -- "No" --> CheckMode{"Mode: Interview or Practice?"}
     
-    CheckMode -- Interview Room --> RenderConsole[Output Rendered to Console Panel]
-    CheckMode -- Practice Arena --> Normalize[Normalize Output: trim spaces, commas, brackets]
+    CheckMode -- "Interview Room" --> RenderConsole["Output Rendered to Console Panel"]
+    CheckMode -- "Practice Arena" --> Normalize["Normalize Output: trim spaces, commas, brackets"]
     
-    Normalize --> CompareOutput{Normalized Actual == Expected?}
-    CompareOutput -- Yes --> TriggerConfetti[🎉 Trigger Confetti Animation + Toast Success]
-    CompareOutput -- No --> TriggerDiff[❌ Toast Test Failure + Display Output]
+    Normalize --> CompareOutput{"Normalized Actual == Expected?"}
+    CompareOutput -- "Yes" --> TriggerConfetti["🎉 Trigger Confetti Animation + Toast Success"]
+    CompareOutput -- "No" --> TriggerDiff["❌ Toast Test Failure + Display Output"]
     
-    ShowCompileError --> End([Done])
+    ShowCompileError --> End(["Done"])
     RenderConsole --> End
     TriggerConfetti --> End
     TriggerDiff --> End
