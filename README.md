@@ -1,9 +1,5 @@
 <h1 align="center">
-  <br>
-  <img src="frontend/public/screenshot-for-readme.png" alt="Talent IQ Banner" width="100%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" />
-  <br>
-  <br>
-  ⚡ Talent IQ ⚡
+  ⚡ DevMeet ⚡
 </h1>
 
 <h3 align="center">Next-Generation Real-Time Collaborative Technical Interview Platform & DSA Arena</h3>
@@ -63,11 +59,11 @@
 
 ## 🌟 Overview
 
-**Talent IQ** is a high-performance, full-stack collaborative platform built to replicate real-world technical interviews and offer an interactive coding playground for software engineers.
+**DevMeet** is a high-performance, full-stack collaborative platform built to replicate real-world technical interviews and offer an interactive coding playground for software engineers.
 
-Traditional interview preparation often separates video communication from coding environments. Talent IQ integrates high-definition audio/video calls, real-time collaborative chat, an industrial-strength Monaco code editor (the engine powering VS Code), and sandboxed multi-language remote code execution into a single, cohesive interface.
+Traditional interview preparation often separates video communication from coding environments. DevMeet integrates high-definition audio/video calls, real-time collaborative chat, an industrial-strength Monaco code editor (the engine powering VS Code), and sandboxed multi-language remote code execution into a single, cohesive interface.
 
-Whether used for peer-to-peer mock interviews, recruiter-led technical rounds, or solo problem solving, Talent IQ provides low-latency communication, strict room concurrency locking, automated test evaluation, and reliable asynchronous background processing.
+Whether used for peer-to-peer mock interviews, recruiter-led technical rounds, or solo problem solving, DevMeet provides low-latency communication, strict room concurrency locking, automated test evaluation, and reliable asynchronous background processing.
 
 ---
 
@@ -183,7 +179,7 @@ sequenceDiagram
     actor User
     participant Clerk as Clerk Auth
     participant Inngest as Inngest Engine
-    participant Server as Talent IQ Backend
+    participant Server as DevMeet Backend
     participant Mongo as MongoDB
     participant Stream as Stream.io
 
@@ -208,7 +204,7 @@ sequenceDiagram
     autonumber
     actor Host as Interview Host
     actor Guest as Participant / Candidate
-    participant Server as Talent IQ Backend
+    participant Server as DevMeet Backend
     participant Mongo as MongoDB
     participant Stream as Stream Cloud
 
@@ -508,7 +504,7 @@ ALL /api/inngest
 ## 📂 Project Directory Structure
 
 ```text
-talent-IQ/
+DevMeet/
 ├── backend/
 │   ├── src/
 │   │   ├── controllers/
@@ -536,8 +532,7 @@ talent-IQ/
 │   │   ├── hero.png                    # Landing page illustration
 │   │   ├── java.png                    # Java language badge
 │   │   ├── javascript.png              # JavaScript language badge
-│   │   ├── python.png                  # Python language badge
-│   │   └── screenshot-for-readme.png   # Main application screenshot
+│   │   └── python.png                  # Python language badge
 │   ├── src/
 │   │   ├── api/
 │   │   │   └── sessions.js             # Axios API client functions for sessions
@@ -595,7 +590,7 @@ NODE_ENV=development
 CLIENT_URL=http://localhost:5173
 
 # Database
-DB_URL=mongodb+srv://<username>:<password>@cluster.mongodb.net/talent-iq?retryWrites=true&w=majority
+DB_URL=mongodb+srv://<username>:<password>@cluster.mongodb.net/devmeet?retryWrites=true&w=majority
 
 # Inngest Background Jobs
 INNGEST_EVENT_KEY=your_inngest_event_key
@@ -706,9 +701,9 @@ When `NODE_ENV=production`, Express automatically serves the compiled SPA files 
 
 ## ☁️ Deployment
 
-Talent IQ is configured for rapid zero-config production deployment on platforms such as **Sevalla**, **Render**, **Railway**, or **Heroku**:
+DevMeet is configured for rapid zero-config production deployment on platforms such as **Sevalla**, **Render**, **Railway**, or **Heroku**:
 
-1. Link your GitHub repository (`Jais-abhi/talent-IQ`) to your cloud provider.
+1. Link your GitHub repository (`Jais-abhi/DevMeet`) to your cloud provider.
 2. Set the build command:
    ```bash
    npm run build
@@ -728,7 +723,7 @@ Developed with passion by **Abhishek Jaiswal**. Feel free to reach out for inqui
 
 - 🐙 **GitHub**: [@Jais-abhi](https://github.com/Jais-abhi)
 - ✉️ **Email**: [abhijaiswal7479@gmail.com](mailto:abhijaiswal7479@gmail.com)
-- 🌐 **Project Repository**: [github.com/Jais-abhi/talent-IQ](https://github.com/Jais-abhi)
+- 🌐 **Project Repository**: [github.com/Jais-abhi/DevMeet](https://github.com/Jais-abhi)
 
 ---
 

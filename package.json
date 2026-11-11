@@ -1,5 +1,5 @@
 {
-  "name": "talent-iq",
+  "name": "devmeet",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,7 +7,7 @@
     "start": "npm run start --prefix backend"
   },
   "keywords": [],
-  "author": "",
+  "author": "Abhishek Jaiswal <abhijaiswal7479@gmail.com> (https://github.com/Jais-abhi)",
   "license": "ISC",
-  "description": ""
+  "description": "DevMeet - Full-stack real-time collaborative technical interview platform and DSA practice arena"
 }

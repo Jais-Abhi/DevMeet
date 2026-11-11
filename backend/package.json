@@ -8,9 +8,9 @@
   },
   "type": "module",
   "keywords": [],
-  "author": "",
+  "author": "Abhishek Jaiswal <abhijaiswal7479@gmail.com> (https://github.com/Jais-abhi)",
   "license": "ISC",
-  "description": "",
+  "description": "DevMeet Express 5 REST API and Inngest Background Workers",
   "dependencies": {
     "@clerk/express": "^1.7.41",
     "@stream-io/node-sdk": "^0.7.12",
